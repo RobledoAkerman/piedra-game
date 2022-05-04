@@ -6,38 +6,34 @@ import { initPageTimeOut } from "./pages/timeout";
 
 const routes = [
   {
-    path: /hello/,
+    path: /\/hello/,
     handler: initPageHello,
   },
   {
-    path: /instructions/,
+    path: /\/instructions/,
     handler: initPageInstructions,
   },
   {
-    path: /game/,
+    path: /\/game/,
     handler: initPageGame,
   },
   {
-    path: /results/,
+    path: /\/results/,
     handler: initPageResults,
   },
   {
-    path: /time-out/,
+    path: /\/time-out/,
     handler: initPageTimeOut,
   },
 ];
 
 export function initRouter(container: Element) {
   function goTo(path) {
-
-    
     history.pushState({}, "", path);
     handleRoute(path);
   }
 
   function handleRoute(route) {
-
-        
     for (const r of routes) {
       if (r.path.test(route)) {
         const el = r.handler({ goTo });
@@ -49,13 +45,14 @@ export function initRouter(container: Element) {
       }
     }
   }
-  
-  if (location.pathname == "/") {
-    goTo("/hello");
+
+  if (location.host.includes("github.io") || location.pathname == "/") {
+    goTo("/piedra/hello");
   } else {
     handleRoute(location.pathname);
   }
-  window.onpopstate = function(){
+
+  window.onpopstate = function () {
     handleRoute(location.pathname);
-  }
+  };
 }

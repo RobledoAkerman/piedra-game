@@ -28,11 +28,6 @@ export function initPageHello(container) {
     font-size: 58px;
     text-align: center;
   }
-  @media(min-width:490px){
-    .titulo{
-      font-size: 74px;
-    }
-  }
 `;
   div.appendChild(style);
   return div;

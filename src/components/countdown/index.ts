@@ -31,12 +31,7 @@ customElements.define(
           justify-content: center;
         }
         .counter{
-          font-size: 240px;
-        }
-        @media(max-width:490px){
-          .counter{
-            font-size: 120px;
-          }
+          font-size: 120px;
         }
         *::selection{
           background-color: #f4a261;
