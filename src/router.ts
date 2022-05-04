@@ -49,12 +49,12 @@ export function initRouter(container: Element) {
       }
     }
   }
-  if (location.host.includes("github.io") || location.pathname == "/") {
-    goTo("/piedra/hello");
+  
+  if (location.pathname == "/") {
+    goTo("/hello");
   } else {
     handleRoute(location.pathname);
   }
-
   window.onpopstate = function(){
     handleRoute(location.pathname);
   }
