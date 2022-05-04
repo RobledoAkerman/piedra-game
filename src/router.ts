@@ -26,27 +26,20 @@ const routes = [
     handler: initPageTimeOut,
   },
 ];
-const BASE_PATH = "/piedra-game";
-
-function isGithubPages() {
-  return location.host.includes("github.io");
-}
 
 export function initRouter(container: Element) {
   function goTo(path) {
 
-    const completePath = isGithubPages() ? BASE_PATH + path : path;
-
-    history.pushState({}, "", completePath);
-    handleRoute(completePath);
+    
+    history.pushState({}, "", path);
+    handleRoute(path);
   }
 
   function handleRoute(route) {
 
-    const newRoute = isGithubPages() ? route.replace(BASE_PATH, "") : route;
-    
+        
     for (const r of routes) {
-      if (r.path.test(newRoute)) {
+      if (r.path.test(route)) {
         const el = r.handler({ goTo });
 
         if (container.firstChild) {
@@ -56,11 +49,12 @@ export function initRouter(container: Element) {
       }
     }
   }
-  if (location.pathname == "/") {
-    goTo("/hello");
+  if (location.host.includes("github.io") || location.pathname == "/") {
+    goTo("/piedra-game/hello");
   } else {
     handleRoute(location.pathname);
   }
+
   window.onpopstate = function(){
     handleRoute(location.pathname);
   }
