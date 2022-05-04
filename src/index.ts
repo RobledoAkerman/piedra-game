@@ -9,7 +9,6 @@ import "./components/countdown"
   if (localStorage["game-state"]) {
     state.init();
   }
-  // localStorage.clear()
 
   const root = document.querySelector(".root");
   initRouter(root);
