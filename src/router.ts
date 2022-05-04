@@ -50,7 +50,7 @@ export function initRouter(container: Element) {
     }
   }
   if (location.host.includes("github.io") || location.pathname == "/") {
-    goTo("/piedra-game/hello");
+    goTo("/piedra/hello");
   } else {
     handleRoute(location.pathname);
   }
